@@ -47,7 +47,7 @@ db.once('open',function(callback){
 			var jsonArrayValor = JSON.parse(JSON.stringify(jsonString));
 			//si count === 0
 			var aDocs = jsonArrayValor;
-			/*
+			
 			Document.count({},function(error,count){
 
 			if (count === 0){
@@ -69,7 +69,8 @@ db.once('open',function(callback){
 			
 			}
 
-			});*/
+			});
+			/* http://stackoverflow.com/questions/12590267/how-to-properly-save-array-of-objects-with-mongoose-nodejs
 
 			for (var n = 0; n < aDocs.length; n++){
 				(function(aDocs_now){
@@ -89,7 +90,7 @@ db.once('open',function(callback){
 						});
 				})(aDocs[n]);
 			}
-	
+			*/
 
 			/*	if (count = 0){
 				for (var n = 0; n < aDocs.length; n++){

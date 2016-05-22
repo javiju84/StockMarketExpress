@@ -47,6 +47,7 @@ db.once('open',function(callback){
 			var jsonArrayValor = JSON.parse(JSON.stringify(jsonString));
 			//si count === 0
 			var aDocs = jsonArrayValor;
+			/*
 			Document.count({},function(error,count){
 
 			if (count === 0){
@@ -68,7 +69,27 @@ db.once('open',function(callback){
 			
 			}
 
-			});
+			});*/
+
+			for (var n = 0; n < aDocs.length; n++){
+				(function(aDocs_now){
+					Document.findOne({fecha:aDocs_now},
+						function(err,doc){
+							if(!err && !doc){
+								var docToAdd = new DocToAdd();
+								docToAdd.fecha = aDocs_now;
+								console.log(docToAdd.fecha);
+								docToAdd.save(function(err){});
+							}else if(!err){
+								console.log("Fecha esta en el sistema");
+							}else{
+								console.log("ERROR: "+err);
+							}
+
+						});
+				})(aDocs[n]);
+			}
+	
 
 			/*	if (count = 0){
 				for (var n = 0; n < aDocs.length; n++){

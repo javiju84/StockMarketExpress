@@ -31,12 +31,12 @@
 
     window.onload=function(){
       // GET request to localhost:3000/test, which has been configured to send back our db data
-      var aData = JSON.parse(httpGet('http://localhost:8080/Santander'));
+      var aData = JSON.parse(httpGet('http://localhost:7070/Santander'));
      
       var valores = [];
      
 
-      for(var n=0 ; n < aData.length; n++){
+      for(var n=aData.length-1 ; n >= 0; n--){
         //seriesFecha.push([aData[n]['fecha']])
         valores.push([
           aData[n]['fecha'],
@@ -50,9 +50,8 @@
 
       anychart.onDocumentReady(function() {
       // create data set on our data
-      //var dataSet = anychart.data.set([ valores[n=20],valores[n=19],valores[n=18],valores[n=17],valores[n=16],valores[n=15],valores[n=14],valores[n=13],valores[n=12],valores[n=11],valores[n=10],valores[n=9],valores[n=8],valores[n=7],valores[n=6],valores[n=5],valores[n=4],valores[n=3],valores[n=2],valores[n=1],valores[n=0]
-      var dataSet = anychart.data.set(valores
-      );
+      var dataSet = anychart.data.set([ valores[n=20],valores[n=19],valores[n=18],valores[n=17],valores[n=16],valores[n=15],valores[n=14],valores[n=13],valores[n=12],valores[n=11],valores[n=10],valores[n=9],valores[n=8],valores[n=7],valores[n=6],valores[n=5],valores[n=4],valores[n=3],valores[n=2],valores[n=1],valores[n=0] ]);
+     // var dataSet = anychart.data.set(valores);
 
    
       // map data for the first series, take x from the zero column and value from the first column of data set

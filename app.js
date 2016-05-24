@@ -50,8 +50,16 @@ db.once('open',function(callback){
 			
 			Document.count({},function(error,count){
 
-			if (count === 0){
+			/*if (count === 0){
 				for (var n = 0; n < aDocs.length; n++){
+				var docToAdd = new Document(aDocs[n]);
+				docToAdd.save(function(error,docToAdd){
+					if (error) return console.error(error)
+				});
+			}
+			}*/
+			if (count === 0){
+				for (var n = aDocs.length-1; n >=0 ; n--){
 				var docToAdd = new Document(aDocs[n]);
 				docToAdd.save(function(error,docToAdd){
 					if (error) return console.error(error)
@@ -60,13 +68,14 @@ db.once('open',function(callback){
 			}
 			else{
 
-				var docToAdd = new Document(aDocs[aDocs.length-1]);
-				//var docToAdd = new Document(aDocs[n=0]);
+				for (var n = 0; n < 1; n++){
+				//var docToAdd = new Document(aDocs[aDocs.length-1]);
+				var docToAdd = new Document(aDocs[n]);
 				docToAdd.save(function(error,docToAdd)
 				{
-					//if (error) return console.error(error)
+					if (error) return console.error(error)
 				});
-			
+			}
 			}
 
 			});
@@ -130,5 +139,5 @@ app.get('/Santander', function (req, res) {
 	});
 });
 
-app.listen(8080);
-console.log("Servidor conectado puerto 8080");
+app.listen(7070);
+console.log("Servidor conectado puerto 7070");

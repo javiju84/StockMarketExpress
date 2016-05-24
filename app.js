@@ -68,9 +68,9 @@ db.once('open',function(callback){
 			}
 			else{
 
-				for (var n = 0; n < 1; n++){
-				//var docToAdd = new Document(aDocs[aDocs.length-1]);
-				var docToAdd = new Document(aDocs[n]);
+				for (var n = aDocs.length-1; n >= 0; n--){
+				var docToAdd = new Document(aDocs[n=0]);
+				//var docToAdd = new Document(aDocs[n]);
 				docToAdd.save(function(error,docToAdd)
 				{
 					if (error) return console.error(error)
